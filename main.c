@@ -2,15 +2,45 @@
 #include <stdio.h>
 
 int main()
-{
-    int i = 0;
-    while ( getchar()!=EOF)
+  int blanks, tabs, newlines;
+  int c;
+  bool done = FALSE;
+  int lastchar = 0;
+  int symb = 0;
+
+  blanks = 0;
+  tabs = 0;
+  newlines = 0;
+
+  while(done == FALSE)
+  {
+    c = getchar();
+
+    if(c == ' ')
+      ++blanks;
+        else
+
+    if(c == '\t')
+      ++tabs;
+        else
+
+    if(c == '\n')
+      ++newlines;
+        else
+
+
+    if(c == EOF)
     {
-        i++;
+      if(lastchar != '\n')
+        ++newlines;
+      done = TRUE;
     }
-    printf("%d\n", i-1);
-
-
-    return 1;
+    else
+        symb++;
+    lastchar = c;
+  }
+  int Total = blanks + tabs + newlines + i;
+  printf("Blanks: %d\nTabs: %d\nLines: %d\nSymbols: %d\nTotal: %d\n", blanks, tabs, newlines, symb, Total);
+  return 0;
 }
 
