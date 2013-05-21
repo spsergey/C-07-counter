@@ -43,6 +43,6 @@ void counter (int mas[3])
     }
 
     mas [0] = blanks + tabs + newlines + i;
-    mas [1] = blanks + tabs + i;
-    mas [2] = newlines + i;
+    mas [1] = newlines;
+    mas [2] = tabs + blanks;
 }

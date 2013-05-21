@@ -29,10 +29,10 @@ int main(int argc, char **argv)
         }
         switch (ch) {
         case 'n':
-            printf ("Number of symbols without 'Newline' symbol: %d\n", count[1]);
+	    count[0] = count[0] - count[1];
             break;
         case 's':
-            printf ("Number of symbols without spaces and 'Tab' symbols: %d\n", count[2]);
+	    count[0] = count[0] - count[2];
             break;
         case '?':
         default:
@@ -40,10 +40,8 @@ int main(int argc, char **argv)
         }
     }
     if (done == false)
-    {
-        counter(count);
-        printf("Total number of symbols: %d\n", count[0]);
-    }
+        counter(count);  
+    printf("Number of symbols: %d\n", count[0]);
     return 0;
 }
 
