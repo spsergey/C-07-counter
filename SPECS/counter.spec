@@ -1,4 +1,4 @@
-Name: counter
+Name: count
 Version: 1.0
 Release: 1%{?dist}
 Summary: Программа-счётчик символов
@@ -6,7 +6,7 @@ Group: Testing
 License: GPL
 URL: http://www.lug.mephist.ru
 Source0:  %{name}-%{version}.tar.gz
-BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+BuildRoot: /tmp/%{name}
 BuildRequires: /bin/rm, /bin/mkdir, /bin/cp
 Requires: /bin/bash
 
@@ -17,28 +17,25 @@ Requires: /bin/bash
 
 %prep
 
-%setup -q
+%setup -c %{name}
 
 %build
-
-#configure
-
-#make %{&_smp_mflags}
+make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-#make install DESTDIR=$RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/local/bin
-cp count $RPM_BUILD_ROOT/usr/local/bin
+mkdir -p $RPM_BUILD_ROOT/usr/bin
+cp %{name} $RPM_BUILD_ROOT/usr/bin
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
+/usr/bin/%{name}
+
 %defattr(-,root,root,-)
 
 #%doc
-%attr(0755,root,root)/usr/local/bin/count
+%attr(0755,root,root)/usr/bin/count
 
 %changelog
 
